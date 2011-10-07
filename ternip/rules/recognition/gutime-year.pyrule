@@ -29,8 +29,7 @@ class rule(ternip.rule_engine.rule.rule):
             else:
                 year = int(match.group(3))
             
-            if year > 1649 and year < 2100 \
-              and re.match(self._prep_re(r'<\w+~.+>(<(daylight|standard)~.+>)?<time~.+>'), match.string[match.end():], re.I) == None:
+            if re.match(self._prep_re(r'<\w+~.+>(<(daylight|standard)~.+>)?<time~.+>'), match.string[match.end():], re.I) == None:
                 
                 # This rule succeeded
                 success = True

@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='TERNIP',
-    version='1.1.2dev',
+    version='1.1.3dev',
     packages=['ternip', 'ternip.formats', 'ternip.rule_engine', 'ternip.rule_engine.normalisation_functions'],
     package_data={'ternip': ['rules/*/*.ruleblock', 'rules/*/*.pyrule', 'rules/*/*.rule']},
     scripts=['annotate_timex'],

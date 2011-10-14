@@ -4,12 +4,13 @@ from distutils.core import setup
 
 setup(
     name='TERNIP',
-    version='1.1.3dev',
+    version='1.1.4dev',
     packages=['ternip', 'ternip.formats', 'ternip.rule_engine', 'ternip.rule_engine.normalisation_functions'],
     package_data={'ternip': ['rules/*/*.ruleblock', 'rules/*/*.pyrule', 'rules/*/*.rule']},
     scripts=['annotate_timex'],
     author='Chris Northwood',
     author_email='chris@pling.org.uk',
+    install_requires=['dateutil'],
     url='https://github.com/nova77/ternip/tree/allows_nnp_after_year',
     description='Temporal Expression Recognition and Normalisation in Python',
     long_description="""

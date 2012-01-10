@@ -118,13 +118,13 @@ class rule:
         cardinal numbers.  Oddly, the previous version was happy matching 'two' but
         not '2'.
         """
-        ordinal = (re.match(expressions.NUMBER_TERM + '(-' + expressions.NUMBER_TERM + ')*', term, re.I) != None)
-        cardinal =(re.match(r'\d+', term) != None)
-        if cardinal:
-        	print("%s is a cardinal" %(term))
-        if ordinal:
-        	print("%s is an ordinal" %(term))
-        return ordinal | cardinal
+        number_term = (re.match(expressions.NUMBER_TERM + '(-' + expressions.NUMBER_TERM + ')*', term, re.I) != None)
+        digits_term =(re.match(r'\d+', term) != None)
+        if number_term:
+        	print("%s is a number term" %(term))
+        if digits_term:
+        	print("%s is a digits term" %(term))
+        return number_term | digits_term
         
     def _do_deliminate_numbers(self, sent):
         """

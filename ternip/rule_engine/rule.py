@@ -111,7 +111,21 @@ class rule:
                 return False
         
         return True
-    
+
+    def _is_number_term(self, term):
+        """
+        Factor out checking for number terms, so that we can match both ordinal and
+        cardinal numbers.  Oddly, the previous version was happy matching 'two' but
+        not '2'.
+        """
+        ordinal = (re.match(expressions.NUMBER_TERM + '(-' + expressions.NUMBER_TERM + ')*', term, re.I) != None)
+        cardinal =(re.match(r'\d+', term) != None)
+        if cardinal:
+        	print("%s is a cardinal" %(term))
+        if ordinal:
+        	print("%s is an ordinal" %(term))
+        return ordinal | cardinal
+        
     def _do_deliminate_numbers(self, sent):
         """
         Translation of GUTime function 'deliminateNumbers' - marks up number
@@ -140,7 +154,7 @@ class rule:
                 next_word = ''
             
             # the following deals reasonably well with hypenated numbers like "twenty-one"
-            if re.match(expressions.NUMBER_TERM + '(-' + expressions.NUMBER_TERM + ')*', current_word, re.I) != None:
+            if self._is_number_term(current_word):
                 # This current word is identified as a number
                 if not in_number:
                     # first in (possible) series of numbers
@@ -186,7 +200,7 @@ class rule:
             sent += to_add
             previous_word = current_word
         
-        if re.match(expressions.NUMBER_TERM + '(-' + expressions.NUMBER_TERM + ')*', current_word, re.I) != None:
+        if self._is_number_term(current_word):
             # final word is a number
             sent += 'NUM_END'
         

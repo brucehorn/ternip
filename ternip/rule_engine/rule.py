@@ -139,7 +139,7 @@ class rule:
         
         in_number = False
         
-        while re.search(r'<[a-zA-Z-]+~.+?>', rest):
+        while re.search(r'<[a-zA-Z0-9-]+~.+?>', rest):
             m = re.search(r'<(?P<word>[a-zA-Z0-9-]+)~(?P<pos>.+?)>', rest)
             sent += m.string[:m.start()]
             rest = m.string[m.end():]

@@ -140,14 +140,14 @@ class rule:
         in_number = False
         
         while re.search(r'<[a-zA-Z-]+~.+?>', rest):
-            m = re.search(r'<(?P<word>[a-zA-Z-]+)~(?P<pos>.+?)>', rest)
+            m = re.search(r'<(?P<word>[a-zA-Z0-9-]+)~(?P<pos>.+?)>', rest)
             sent += m.string[:m.start()]
             rest = m.string[m.end():]
             
             current_word = m.group('word')
             
             # Get next word
-            n = re.search(r'<(?P<word>[a-zA-Z-]+)~(?P<pos>.+?)>', rest)
+            n = re.search(r'<(?P<word>[a-zA-Z0-9-]+)~(?P<pos>.+?)>', rest)
             if n != None:
                 next_word = n.group('word')
             else:

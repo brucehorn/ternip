@@ -120,10 +120,6 @@ class rule:
         """
         number_term = (re.match(expressions.NUMBER_TERM + '(-' + expressions.NUMBER_TERM + ')*', term, re.I) != None)
         digits_term =(re.match(r'\d+', term) != None)
-        if number_term:
-        	print("%s is a number term" %(term))
-        if digits_term:
-        	print("%s is a digits term" %(term))
         return number_term | digits_term
         
     def _do_deliminate_numbers(self, sent):
@@ -139,7 +135,9 @@ class rule:
         
         in_number = False
         
+        # Expanded the regex to allow *initial* numeric terms
         while re.search(r'<[a-zA-Z0-9-]+~.+?>', rest):
+        	# Expanded the regex to allow numeric terms, and POS entry
             m = re.search(r'<(?P<word>[a-zA-Z0-9-]+)~(?P<pos>.+?)>', rest)
             sent += m.string[:m.start()]
             rest = m.string[m.end():]
@@ -147,6 +145,10 @@ class rule:
             current_word = m.group('word')
             
             # Get next word
+            # Note: this seems to have been correct before, in allowing
+            # numeric terms, but for some reason the first regex in the while
+            # loop did not allow it.  Was this a deliberate choice for
+            # restricting the number format?
             n = re.search(r'<(?P<word>[a-zA-Z0-9-]+)~(?P<pos>.+?)>', rest)
             if n != None:
                 next_word = n.group('word')

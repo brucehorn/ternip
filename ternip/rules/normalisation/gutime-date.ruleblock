@@ -316,6 +316,15 @@ Match: (<the~.+>|<a~.+>|NUM_START.*NUM_END)(<.*>)*<(while|year|month|moon|fortni
 Value: offset_from_date(cur_context, -1 * words_to_num({#1}), {#3}, False)
 
 ---
+# 35a
+
+Type: date
+Deliminate-Numbers: true
+Match: (<in~.+>|NUM_START.*NUM_END)(<.*>)*<(while|year|month|moon|fortnight|week|day|decade|centur(y|ie))s?~.+>
+Value: offset_from_date(cur_context, words_to_num({#1}), {#3}, False)
+
+
+---
 # 36
 
 Type: date

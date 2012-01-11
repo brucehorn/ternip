@@ -38,6 +38,9 @@ class timex:
         self.context    = None
         self.non_consuming = False
         
+    def __repr__(self):
+    	return ("timex(type=%s, value=%s, id=%s)" % (self.type, self.value, self.id))
+    
 
 def add_timex_ids(ts):
     """

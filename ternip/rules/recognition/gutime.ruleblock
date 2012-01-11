@@ -223,6 +223,13 @@ Guard: <(ago|hence|from)~.+>
 Match: (<(about|around|some)~.+>)?(<.+~CD>(<and~.+>)?)*(<.+~CD>)<(year|month|week|day|decade|cenutur(y|ie))s?~.+>(<ago~.+>(<(today|tomorrow|yesterday|$DAYS)~.+>)?|<hence~.+>|<from~.+><(now|today|tomorrow|yesterday|$DAYS)~.+>)
 
 ---
+# 35a
+
+Type: date
+Guard: <in~.+>
+Match: (<in~.+>)?(<.+~CD>)?(<(year|month|week|day|decade|cenutur(y|ie))s?~.+>)
+
+---
 # 36
 
 Type: date
